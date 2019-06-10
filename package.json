@@ -12,6 +12,7 @@
     "expo": "^33.0.0",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.4",
+    "mobx-react-form": "^2.0.2",
     "mobx-utils": "^5.4.0",
     "native-base": "^2.12.1",
     "react": "16.8.3",
