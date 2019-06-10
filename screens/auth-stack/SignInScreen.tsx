@@ -1,7 +1,9 @@
-import {Button, Content, Form, Input, Item, Label, Text} from 'native-base';
+import {Content, Form, Input, Item, Label, Text} from 'native-base';
 import React, {Component} from 'react';
 import {Button as RNButton} from 'react-native';
 import {NavigationScreenProps} from 'react-navigation';
+
+import {ApplyButton} from '../../components/ApplyButton';
 
 export default class SignInScreen extends Component<NavigationScreenProps> {
   public static navigationOptions = ({navigation}: NavigationScreenProps) => {
@@ -17,23 +19,21 @@ export default class SignInScreen extends Component<NavigationScreenProps> {
 
   public render() {
     return (
-      <>
-        <Content>
-          <Form>
-            <Item fixedLabel>
-              <Label>Email</Label>
-              <Input />
-            </Item>
-            <Item fixedLabel last>
-              <Label>Password</Label>
-              <Input />
-            </Item>
-          </Form>
-          <Button full onPress={this.login}>
+      <Content>
+        <Form>
+          <Item floatingLabel>
+            <Label>Email</Label>
+            <Input />
+          </Item>
+          <Item floatingLabel last>
+            <Label>Password</Label>
+            <Input />
+          </Item>
+          <ApplyButton block onPress={this.login}>
             <Text>Login</Text>
-          </Button>
-        </Content>
-      </>
+          </ApplyButton>
+        </Form>
+      </Content>
     );
   }
 }

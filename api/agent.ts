@@ -1,4 +1,5 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
+import {AsyncStorage} from 'react-native';
 
 interface AxiosResponse<T = any> extends Promise<T> {}
 
@@ -34,5 +35,16 @@ const agent = axios.create({
 });
 
 agent.interceptors.response.use(response => response.data);
+
+agent.interceptors.request.use(
+  async config => {
+    const token = await AsyncStorage.getItem('JWT_BEARER_TOKEN');
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
 
 export default agent as AgentInstanceCustom;
