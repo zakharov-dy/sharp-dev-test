@@ -1,9 +1,9 @@
+import agent from '_api/agent';
 import {
   TransactionRequest,
   TransactionResponse,
   TransactionsListResponse
-} from '../types/api/transaction';
-import agent from './agent';
+} from '_types/api/transaction';
 
 export class Transactions {
   public create = (params: TransactionRequest): Promise<TransactionResponse> =>

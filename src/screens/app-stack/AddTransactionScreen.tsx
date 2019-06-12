@@ -2,7 +2,7 @@ import {Content, Form, Input, Item, Label, Text} from 'native-base';
 import React, {Component} from 'react';
 import {NavigationScreenProps} from 'react-navigation';
 
-import {ApplyButton} from '../../components/ApplyButton';
+import {ApplyButton} from '_components/ApplyButton';
 
 export default class AddTransactionScreen extends Component<
   NavigationScreenProps

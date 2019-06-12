@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Button as RNButton} from 'react-native';
 import {NavigationScreenProps} from 'react-navigation';
 
-import {ApplyButton} from '../../components/ApplyButton';
+import {ApplyButton} from '_components/ApplyButton';
 
 export default class SignInScreen extends Component<NavigationScreenProps> {
   public static navigationOptions = ({navigation}: NavigationScreenProps) => {

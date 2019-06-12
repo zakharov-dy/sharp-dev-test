@@ -1,11 +1,11 @@
+import agent from '_api/agent';
 import {
   SignInRequest,
   SignInResponse,
   SignUpRequest,
   SignUpResponse,
   UserInfo
-} from '../types/api/account';
-import agent from './agent';
+} from '_types/api/account';
 
 export class Profile {
   public signUp = (params: SignUpRequest): Promise<SignUpResponse> =>

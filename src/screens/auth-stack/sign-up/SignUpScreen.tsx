@@ -1,7 +1,7 @@
 import {Content, Form, Input, Item, Label, Text} from 'native-base';
 import React, {Component} from 'react';
 
-import {ApplyButton} from '../../components/ApplyButton';
+import {ApplyButton} from '_components/ApplyButton';
 
 export default class SignUpScreen extends Component {
   public static navigationOptions = {
