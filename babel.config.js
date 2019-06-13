@@ -18,12 +18,13 @@ module.exports = function(api) {
           ],
           root: ["./src"],
           alias: {
-            "_api": ["./src/api"],
-            "_components": ["./src/components"],
-            "_hoc": ["./src/hoc"],
-            "_mobx": ["./src/mobx"],
-            "_screens": ["./src/screens"],
-            "_types": ["./src/types"]
+            _api: ["./src/api"],
+            _components: ["./src/components"],
+            _hoc: ["./src/hoc"],
+            _mobx: ["./src/mobx"],
+            _screens: ["./src/screens"],
+            _types: ["./src/types"],
+            _utils: ["./src/utils"]
           }
         }
       ]

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "allowJs": false,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
@@ -19,7 +19,8 @@
       "_hoc/*": ["src/hoc/*"],
       "_mobx/*": ["src/mobx/*"],
       "_screens/*": ["src/screens/*"],
-      "_types/*": ["src/types/*"]
+      "_types/*": ["src/types/*"],
+      "_utils/*": ["src/utils/*"]
     }
   },
   "exclude": ["node_modules"]

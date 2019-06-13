@@ -14,4 +14,4 @@ export class Operations {
   };
 }
 
-export default new Operations();
+export default new Operations()

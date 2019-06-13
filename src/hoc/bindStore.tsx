@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
 import {NavigationEvents} from 'react-navigation';
 
-import {BoundStore} from 'types/core/boundStore';
+import {BoundStore} from '_types/core/boundStore';
 
 interface Options {
   containerStyle?: StyleProp<ViewStyle>;
