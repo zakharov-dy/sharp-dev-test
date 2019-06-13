@@ -13,5 +13,3 @@ export class Operations {
     this.operations.delete(id);
   };
 }
-
-export default new Operations()

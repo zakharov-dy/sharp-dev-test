@@ -1,3 +1,4 @@
+import {Provider} from 'mobx-react';
 import {Container} from 'native-base';
 import React from 'react';
 import {NavigationContainerComponent} from 'react-navigation';
@@ -5,6 +6,7 @@ import {NavigationContainerComponent} from 'react-navigation';
 import {setTopLevelNavigator} from '_utils/navigation';
 
 import AppNavigator from './src/AppNavigator';
+import stores from './src/store';
 
 export default class App extends React.Component {
   private navigationRef = React.createRef<NavigationContainerComponent>();
@@ -17,9 +19,11 @@ export default class App extends React.Component {
 
   public render() {
     return (
-      <Container>
-        <AppNavigator ref={this.navigationRef} />
-      </Container>
+      <Provider {...stores}>
+        <Container>
+          <AppNavigator ref={this.navigationRef} />
+        </Container>
+      </Provider>
     );
   }
 }

@@ -17,11 +17,11 @@ export default class SignInView extends Component<Props> {
         <Form>
           <Item floatingLabel>
             <Label>Email</Label>
-            <Input {...this.props.emailInputProps} />
+            <Input onChangeText={this.props.emailInputProps.onChange} />
           </Item>
           <Item floatingLabel last>
             <Label>Password</Label>
-            <Input {...this.props.passwordInputProps}/>
+            <Input onChangeText={this.props.passwordInputProps.onChange}  />
           </Item>
           <ApplyButton block onPress={this.props.onClick}>
             <Text>Login</Text>

@@ -1,6 +1,6 @@
 import {flow} from 'mobx';
 
-import operations from './Operations';
+import core from '../index';
 
 // Поскольку flow канселится можно добавить и cancel, но тут это не нужно
 export const operationRunner = <TArgs extends any[], TRes>(
@@ -8,7 +8,7 @@ export const operationRunner = <TArgs extends any[], TRes>(
   genFunc: any
 ) => {
   const run = (...args: TArgs) => {
-    operations.addOrUpdateOperation({
+    core.addOrUpdateOperation({
       id,
       isLoading: true,
       isError: false,
@@ -17,7 +17,7 @@ export const operationRunner = <TArgs extends any[], TRes>(
     });
 
     const onSuccess = () => {
-      operations.addOrUpdateOperation({
+      core.addOrUpdateOperation({
         id,
         isError: false,
         error: null,
@@ -27,7 +27,7 @@ export const operationRunner = <TArgs extends any[], TRes>(
 
     const onError = (error: any) => {
       console.log(error);
-      operations.addOrUpdateOperation({
+      core.addOrUpdateOperation({
         id,
         isError: true,
         error,
@@ -41,7 +41,7 @@ export const operationRunner = <TArgs extends any[], TRes>(
   };
 
   const destroy = () => {
-    operations.removeOperation(id);
+    core.removeOperation(id);
   };
 
   return {

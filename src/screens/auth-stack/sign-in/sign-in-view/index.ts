@@ -1,17 +1,14 @@
 import {withStore} from '_hoc/withStore';
-import {observable} from 'mobx';
 
-// import Form from './form';
-import SignInView from './SignInView';
-import profile from '_mobx/Profile';
+import Form from './form';
+import SignInView, {Props} from './SignInView';
 
-// const form = new Form();
+const form: any = new Form();
 
-// const mapProps = form => ({
-//   emailInputProps: {...form.$('email')},
-//   passwordInputProps: {...form.$('password')},
-//   onClick: form.onSubmit
-// });
+const mapProps = (form): Props => ({
+  emailInputProps: form.$('email').bind(),
+  passwordInputProps: form.$('password').bind(),
+  onClick: form.onSubmit
+});
 
-export default withStore(profile, (profile) => profile)(observable(SignInView));
-// export default SignInView;
+export default withStore<any, Props, any>(form, mapProps)(SignInView);

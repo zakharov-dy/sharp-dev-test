@@ -21,7 +21,7 @@ module.exports = function(api) {
             _api: ["./src/api"],
             _components: ["./src/components"],
             _hoc: ["./src/hoc"],
-            _mobx: ["./src/mobx"],
+            _store: ["./src/store"],
             _screens: ["./src/screens"],
             _types: ["./src/types"],
             _utils: ["./src/utils"]

@@ -1,7 +1,7 @@
 import {Observer} from 'mobx-react';
 import React, {Component} from 'react';
 
-import mobxStores, {StoreType as Stores} from '../mobx';
+import mobxStores, {StoreType as Stores} from '../store';
 
 export type StoreType = Stores;
 
