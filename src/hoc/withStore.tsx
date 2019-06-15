@@ -21,7 +21,7 @@ export const withStore = <StoreType, ConnectedProps, OwnProps>(
     }
   }
 
-  return (Component: React.FunctionComponent<ConnectedProps & OwnProps>) => (
+  return (Component: React.ComponentType<ConnectedProps & OwnProps>) => (
     ownProps: OwnProps
   ) => (
     <WithStore>

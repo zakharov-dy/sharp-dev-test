@@ -5,14 +5,12 @@ import SignInView, {Props} from './SignInView';
 
 const form: any = new Form();
 
-const mapProps = (form): Props => {
+const mapProps = (form: any): Props => {
   return {
-    emailInputProps: form.$('email').bind(),
-    emailError: form.$('email').hasError,
-    passwordInputProps: form.$('password').bind(),
-    passwordError: form.$('password').hasError,
+    emailField: form.$('email'),
+    passwordField: form.$('password'),
     onClick: form.onSubmit
   } as Props;
 };
 
-export default withStore<any, Props, any>(form, mapProps)(SignInView);
+export default withStore<any, Props, {}>(form, mapProps)(SignInView);

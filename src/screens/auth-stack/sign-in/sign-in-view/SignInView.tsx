@@ -1,45 +1,29 @@
 import {
   Content,
   Form,
-  Input,
-  Item,
-  Label,
   NativeBase,
   Text
 } from 'native-base';
 import React, {Component} from 'react';
 
 import {ApplyButton} from '_components/ApplyButton';
+import InputItem from '_components/fields/InputItem';
 
 export interface Props {
-  emailProps: NativeBase.Input;
-  passwordProps: NativeBase.Input;
+  emailField: NativeBase.Input;
+  passwordField: NativeBase.Input;
   onClick: () => void;
 }
 
 export default class SignInView extends Component<Props> {
   public render() {
-    const {
-      passwordError,
-      passwordInputProps,
-      emailInputProps,
-      emailError,
-      onClick
-    } = this.props;
-
-    console.log(emailError);
+    const {emailField, passwordField, onClick} = this.props;
 
     return (
       <Content>
         <Form>
-          <Item floatingLabel error={emailError}>
-            <Label>Email</Label>
-            <Input onChangeText={emailInputProps.onChange} />
-          </Item>
-          <Item floatingLabel last error={passwordError}>
-            <Label>Password</Label>
-            <Input onChangeText={passwordInputProps.onChange} />
-          </Item>
+          <InputItem field={emailField} label="Email" />
+          <InputItem field={passwordField} label="Password" />
           <ApplyButton block onPress={onClick}>
             <Text>Login</Text>
           </ApplyButton>
