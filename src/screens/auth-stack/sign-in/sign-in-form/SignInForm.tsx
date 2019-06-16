@@ -1,9 +1,4 @@
-import {
-  Content,
-  Form,
-  NativeBase,
-  Text
-} from 'native-base';
+import {Content, Form, NativeBase, Text} from 'native-base';
 import React, {Component} from 'react';
 
 import {ApplyButton} from '_components/ApplyButton';
@@ -15,7 +10,7 @@ export interface Props {
   onClick: () => void;
 }
 
-export default class SignInView extends Component<Props> {
+export default class SignInForm extends Component<Props> {
   public render() {
     const {emailField, passwordField, onClick} = this.props;
 
@@ -23,7 +18,7 @@ export default class SignInView extends Component<Props> {
       <Content>
         <Form>
           <InputItem field={emailField} label="Email" />
-          <InputItem field={passwordField} label="Password" />
+          <InputItem field={passwordField} label="Password" inputProps={{secureTextEntry: true}}/>
           <ApplyButton block onPress={onClick}>
             <Text>Login</Text>
           </ApplyButton>

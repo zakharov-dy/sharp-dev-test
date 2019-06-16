@@ -1,4 +1,4 @@
-import {operationRunner} from './operationRunner';
+import {operationRunner} from '_store/core/operations/operationRunner';
 
 export default function (id: string) {
   return function (
@@ -7,8 +7,8 @@ export default function (id: string) {
     descriptor: PropertyDescriptor
   ) {
     const method = descriptor.value;
-    descriptor.value = function () {
-      return operationRunner(id, method.bind(this)).run(arguments);
+    descriptor.value = function (...args: any) {
+      return operationRunner(id, method.bind(this)).run(...args);
     };
   };
 }

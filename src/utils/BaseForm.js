@@ -3,8 +3,6 @@ import dvr from "mobx-react-form/lib/validators/DVR";
 import Validator from "validatorjs";
 import en from "validatorjs/src/lang/en";
 
-import BaseField from "./BaseField";
-
 // https://github.com/skaterdav85/validatorjs/issues/229
 Validator.setMessages("en", en);
 
@@ -15,7 +13,10 @@ export default class BaseForm extends Form {
     };
   }
 
-  makeField(props) {
-    return new BaseField(props, this);
+  options() {
+    return {
+      validateOnChange: true,
+      validationDebounceWait: 500,
+    };
   }
 }

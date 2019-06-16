@@ -35,7 +35,7 @@ export const operationRunner = <TArgs extends any[], TRes>(
       });
     };
 
-    return flow(genFunc)(args)
+    return flow(genFunc)(...args)
       .then(onSuccess)
       .catch(onError);
   };

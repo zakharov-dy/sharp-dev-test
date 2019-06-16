@@ -1,13 +1,11 @@
+import {observer} from 'mobx-react';
 import {NativeBase} from 'native-base';
 import React, {Component} from 'react';
-import {observer} from 'mobx-react';
 
 import {BaseProps} from '_components/fields/types';
 
-export const formField = (
-  Component: React.ComponentType<BaseProps>
-) => {
-  class WithForm extends React.Component<BaseProps & { field: any }> {
+export const formField = (Component: React.ComponentType<BaseProps>) => {
+  class WithForm extends React.Component<Partial<BaseProps> & { field: any }> {
     private onBlur = (e: React.SyntheticEvent) => {
       e.preventDefault();
       this.props.field.onBlur();
@@ -15,9 +13,14 @@ export const formField = (
     };
 
     public render() {
-      const {inputProps = {}, itemProps = {}, field, ...other} = this.props;
+      const {
+        inputProps = {},
+        itemProps = {},
+        field,
+        label = '',
+        ...other
+      } = this.props;
       const bound = field.bind();
-      console.log(bound.blured);
 
       const hocInputProps = {
         ...inputProps,
@@ -27,12 +30,13 @@ export const formField = (
 
       const hocItemProps: NativeBase.Item = {
         ...itemProps,
-        error: field.hasError
+        error: (field.blurred || !field.isPristine) && field.hasError
       };
 
       return (
         <Component
           {...other}
+          label={label}
           inputProps={hocInputProps}
           itemProps={hocItemProps}
         />

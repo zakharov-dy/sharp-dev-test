@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button as RNButton} from 'react-native';
 import {NavigationScreenProps} from 'react-navigation';
 
-import SignInView from './sign-in-view';
+import SignInForm from './sign-in-form';
 
 export default class SignInScreen extends Component<NavigationScreenProps> {
   public static navigationOptions = ({navigation}: NavigationScreenProps) => {
@@ -15,6 +15,6 @@ export default class SignInScreen extends Component<NavigationScreenProps> {
   };
 
   public render() {
-    return <SignInView />;
+    return <SignInForm />;
   }
 }
