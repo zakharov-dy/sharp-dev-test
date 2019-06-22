@@ -1,25 +1,29 @@
 import {
   Body,
+  Button,
   Content,
+  Icon,
   Left,
   List,
   ListItem,
   Right,
-  Text,
+  Text
 } from 'native-base';
 import React, {Component} from 'react';
-import {Button as RNButton} from 'react-native';
 import {NavigationScreenProps} from 'react-navigation';
+
+import Header from './Header';
 
 export default class HistoryScreen extends Component<NavigationScreenProps> {
   public static navigationOptions = ({navigation}: NavigationScreenProps) => {
-    const navigateToSignUp = () => navigation.push('AddTransaction');
+    const addTransaction = () => navigation.push('AddTransaction');
+    const rightChild = (
+      <Button transparent onPress={addTransaction}>
+        <Icon name="plus" type="FontAwesome" />
+      </Button>
+    );
     return {
-      headerTitle: 'History',
-      headerRight: (
-        <RNButton onPress={navigateToSignUp} title={'Add transaction'} />
-      ),
-      headerBackTitle: null
+      header: <Header title="History" rightChild={rightChild} />
     };
   };
 
@@ -28,7 +32,7 @@ export default class HistoryScreen extends Component<NavigationScreenProps> {
       <Content>
         <List>
           <ListItem avatar>
-            <Left/>
+            <Left />
             <Body>
               <Text>Kumar Pratik</Text>
               <Text note>
@@ -40,7 +44,7 @@ export default class HistoryScreen extends Component<NavigationScreenProps> {
             </Right>
           </ListItem>
           <ListItem avatar>
-            <Left/>
+            <Left />
             <Body>
               <Text>Kumar Pratik</Text>
               <Text note>

@@ -4,9 +4,10 @@ import {
   createSwitchNavigator
 } from 'react-navigation';
 
-import AddTransactionScreen from '_screens/app-stack/AddTransactionScreen';
+import AddTransactionScreen from '_screens/app-stack/add-transaction/AddTransactionScreen';
 import HistoryScreen from '_screens/app-stack/HistoryScreen';
 import SignInScreen from '_screens/auth-stack/sign-in/SignInScreen';
+import AuthLoadingScreen from '_screens/auth-loading';
 import SignUpScreen from '_screens/auth-stack/sign-up/SignUpScreen';
 
 const AppStack = createStackNavigator(
@@ -27,12 +28,12 @@ const AuthStack = createStackNavigator({
 export default createAppContainer(
   createSwitchNavigator(
     {
-      // AuthLoading: AuthLoadingScreen,
+      AuthLoading: AuthLoadingScreen,
       App: AppStack,
       Auth: AuthStack
     },
     {
-      initialRouteName: 'Auth'
+      initialRouteName: 'AuthLoading'
     }
   )
 );

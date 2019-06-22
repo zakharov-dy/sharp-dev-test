@@ -18,9 +18,11 @@ export interface SignInResponse {
 }
 
 export interface UserInfo {
-  id: string;
-  name: string;
-  email: string;
-  balance: number;
+  user_info_token: {
+    id: string;
+    name: string;
+    email: string;
+    balance: number;
+  }
 }
 

@@ -8,21 +8,21 @@ interface Options {
   containerStyle?: StyleProp<ViewStyle>;
 }
 
-function bindStore<P, T extends BoundStore>(boundStore: T, options: Options) {
-  return function (Component: React.ComponentType<P & { boundStore: T }>) {
+function bindStore<P, T extends BoundStore>(boundStore: T, options?: Options) {
+  return function (Component: React.ComponentType<P>) {
     class BindStore extends React.Component<P> {
-      private onWillBlur = () => boundStore.toFinish();
+      private onWillBlur = () => boundStore.toFinish && boundStore.toFinish();
       private onWillFocus = () => boundStore.startUp();
 
       public render() {
-        const {containerStyle} = options;
+        const containerStyle = options && options.containerStyle;
         return (
           <View style={containerStyle}>
             <NavigationEvents
               onWillBlur={this.onWillBlur}
               onWillFocus={this.onWillFocus}
             />
-            <Component {...this.props} boundStore={boundStore} />
+            <Component {...this.props} />
           </View>
         );
       }

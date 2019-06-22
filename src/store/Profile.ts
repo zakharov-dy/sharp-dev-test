@@ -1,4 +1,4 @@
-import {observable} from 'mobx';
+import {action, observable} from 'mobx';
 import {AsyncStorage} from 'react-native';
 
 import profileAPI from '_api/Profile';
@@ -10,7 +10,6 @@ import {
   UserInfo
 } from '_types/api/account';
 import {navigate} from '_utils/navigation';
-
 import operation from '_utils/operationDecorathor';
 
 export class Profile {
@@ -18,13 +17,20 @@ export class Profile {
   @observable public email?: string = undefined;
   @observable public balance?: number = undefined;
 
+  @action private setUserInfo(userInfo: UserInfo) {
+    const {
+      user_info_token: {name, email, balance}
+    } = userInfo;
+    this.balance = balance;
+    this.email = email;
+    this.name = name;
+  }
+
   @operation('signIn') public *signIn(params: SignInRequest) {
     const res: SignInResponse = yield profileAPI.signIn(params);
     yield AsyncStorage.setItem('JWT_BEARER_TOKEN', res.id_token);
-    console.log(res);
-    console.log(yield AsyncStorage.getAllKeys());
-    console.log(yield this.userInfo());
-    // navigate('History');
+    yield this.userInfo();
+    navigate('History');
   }
 
   @operation('signUp') public *signUp(
@@ -33,20 +39,13 @@ export class Profile {
     const {passwordConfirmation, ...params} = rawParams;
     const res: SignUpResponse = yield profileAPI.signUp(params);
     yield AsyncStorage.setItem('JWT_BEARER_TOKEN', res.id_token);
-    const {balance, email, name}: UserInfo = yield profileAPI.userInfo();
-    console.log(balance, email, name);
-    console.log(yield AsyncStorage.getAllKeys());
-    console.log(yield this.userInfo());
-
+    yield this.userInfo();
     navigate('History');
   }
 
   @operation('userInfo') public *userInfo() {
-    const {balance, email, name}: UserInfo = yield profileAPI.userInfo();
-    this.balance = balance;
-    this.email = email;
-    this.name = name;
-    console.log(balance, email, name);
+    const userInfo: UserInfo = yield profileAPI.userInfo();
+    this.setUserInfo(userInfo);
   }
 
   @operation('logout') public *logout() {
