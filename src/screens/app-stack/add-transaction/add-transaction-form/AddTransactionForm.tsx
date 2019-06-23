@@ -2,7 +2,8 @@ import {Content, Form, NativeBase, Text} from 'native-base';
 import React, {Component} from 'react';
 
 import {ApplyButton} from '_components/ApplyButton';
-import InputItem from '_components/fields/InputItem';
+import InputItem from '_components/fields/input/InputItem';
+import Picker from '_components/fields/picker/Picker';
 
 export interface Props {
   nameField: NativeBase.Input;
@@ -17,8 +18,8 @@ export default class AddTransactionForm extends Component<Props> {
     return (
       <Content>
         <Form>
-          <InputItem field={nameField} label="Name" />
-          <InputItem field={amountField} label="Amount"/>
+          <Picker field={nameField} placeholder={'Select name'}/>
+          <InputItem field={amountField} label="Amount" />
           <ApplyButton block onPress={onClick}>
             <Text>Login</Text>
           </ApplyButton>

@@ -2,7 +2,7 @@ import {Content, Form, NativeBase, Text} from 'native-base';
 import React, {Component} from 'react';
 
 import {ApplyButton} from '_components/ApplyButton';
-import InputItem from '_components/fields/InputItem';
+import InputItem from '_components/fields/input/InputItem';
 
 export interface Props {
   emailField: NativeBase.Input;

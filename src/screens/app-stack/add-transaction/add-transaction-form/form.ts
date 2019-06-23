@@ -1,16 +1,28 @@
-import profile from '_store/Profile';
+// @ts-ignore
+import {Field} from 'mobx-react-form';
+
 import BaseForm from '_utils/BaseForm';
 
+import RulesField from './RulesField';
+
 export default class SignInForm extends BaseForm {
+  public makeField(props: any) {
+    if (props.key === 'name') {
+      return new RulesField(props);
+    } else {
+      return new Field(props);
+    }
+  }
+
   public setup() {
     return {
       fields: [
         {
-          name: 'email',
-          rules: 'required|email|string'
+          name: 'name',
+          rules: 'required|string'
         },
         {
-          name: 'password',
+          name: 'amount',
           rules: 'required|string'
         }
       ]
@@ -20,7 +32,7 @@ export default class SignInForm extends BaseForm {
   public hooks() {
     return {
       onSuccess(form: any) {
-        profile.signIn(form.values());
+        console.log(form.values());
       }
     };
   }

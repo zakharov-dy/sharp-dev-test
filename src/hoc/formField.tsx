@@ -2,7 +2,7 @@ import {observer} from 'mobx-react';
 import {NativeBase} from 'native-base';
 import React, {Component} from 'react';
 
-import {BaseProps} from '_components/fields/types';
+import {BaseProps} from '_components/fields/input/types';
 
 export const formField = (Component: React.ComponentType<BaseProps>) => {
   class WithForm extends React.Component<Partial<BaseProps> & { field: any }> {

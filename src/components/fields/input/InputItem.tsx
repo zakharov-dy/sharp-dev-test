@@ -1,9 +1,9 @@
 import {Input, Item, Label, NativeBase} from 'native-base';
 import React from 'react';
 
-import {formField} from '_hoc/formField';
+import {formField} from '_hoc/formField'
 
-import {BaseProps} from './types';
+import {BaseProps} from 'src/components/fields/input/types'
 
 export type Props = BaseProps<NativeBase.Input>;
 

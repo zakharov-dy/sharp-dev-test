@@ -1,8 +1,10 @@
 import agent from '_api/agent';
 import {
+  FoundUser,
   TransactionRequest,
   TransactionResponse,
-  TransactionsListResponse
+  TransactionsListResponse,
+  UsersListRequest
 } from '_types/api/transaction';
 
 export class Transactions {
@@ -14,6 +16,11 @@ export class Transactions {
 
   public list = (): Promise<TransactionsListResponse> =>
     agent.get<TransactionsListResponse>('/api/protected/transactions');
+
+  public userList = (filter: string): Promise<FoundUser[]> =>
+    agent.post<UsersListRequest, FoundUser[]>('/api/protected/users/list', {
+      filter
+    });
 }
 
 export default new Transactions();
