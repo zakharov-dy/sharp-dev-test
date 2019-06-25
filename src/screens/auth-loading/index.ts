@@ -1,8 +1,13 @@
-import bindStore from '_hoc/bindStore';
+import {compose} from '@typed/compose';
 
-import AuthLoadingScreen from './AuthLoadingScreen';
-import authLoadingScreenStore from './store';
+import {bindStore} from '_hoc/bindStore';
+import {withOperation} from '_hoc/withOperation';
 
-const AuthLoading = bindStore(authLoadingScreenStore)(AuthLoadingScreen);
+import store from './store';
 
-export default AuthLoading;
+const empty = () => null;
+
+export default compose(
+  bindStore(store, {containerStyle: {flex: 1, marginTop: 150}}),
+  withOperation(store.startUp),
+)(empty);

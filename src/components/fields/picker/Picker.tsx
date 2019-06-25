@@ -50,7 +50,7 @@ class Picker extends React.Component<Props> {
           onValueChange={bound.onChange}
           placeholder={this.props.placeholder}
         >
-          {field.foundUserOptions.map(this.renderOption)}
+          {field.pickerOptions.map(this.renderOption)}
         </NBPicker>
       </Item>
     );

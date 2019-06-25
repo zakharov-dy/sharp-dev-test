@@ -1,15 +1,25 @@
+import {compose} from '@typed/compose';
+import {observer} from 'mobx-react';
+
+import {bindStore} from '_hoc/bindStore';
+import {withOperation} from '_hoc/withOperation';
 import {withStore} from '_hoc/withStore';
 
 import AddTransactionForm, {Props} from './AddTransactionForm';
-import Form from './form';
+import addTransactionStore, {AddTransactionStore} from './store';
 
-const form: any = new Form();
-
-const mapProps = (form: any): Props =>
+const mapProps = (store: AddTransactionStore): Props =>
   ({
-    nameField: form.$('name'),
-    amountField: form.$('amount'),
-    onClick: form.onSubmit
+    nameField: store.form.$('name'),
+    amountField: store.form.$('amount'),
+    onClick: store.form.onSubmit
   } as Props);
 
-export default withStore<any, Props, {}>(form, mapProps)(AddTransactionForm);
+export default compose(
+  bindStore<{}, AddTransactionStore>(addTransactionStore, {
+    containerStyle: {flex: 1}
+  }),
+  withOperation(addTransactionStore.startUp),
+  withStore<AddTransactionStore, Props, {}>(addTransactionStore, mapProps),
+  observer
+)(AddTransactionForm);

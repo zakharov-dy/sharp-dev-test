@@ -8,11 +8,11 @@ interface Options {
   containerStyle?: StyleProp<ViewStyle>;
 }
 
-function bindStore<P, T extends BoundStore>(boundStore: T, options?: Options) {
+export function bindStore<P, T extends BoundStore>(boundStore: T, options?: Options) {
   return function (Component: React.ComponentType<P>) {
     class BindStore extends React.Component<P> {
       private onWillBlur = () => boundStore.toFinish && boundStore.toFinish();
-      private onWillFocus = () => boundStore.startUp();
+      private onWillFocus = () => boundStore.startUp && boundStore.startUp();
 
       public render() {
         const containerStyle = options && options.containerStyle;
@@ -31,5 +31,3 @@ function bindStore<P, T extends BoundStore>(boundStore: T, options?: Options) {
     return BindStore;
   };
 }
-
-export default bindStore;

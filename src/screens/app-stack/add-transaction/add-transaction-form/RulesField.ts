@@ -13,8 +13,7 @@ const foundUserToOption = (foundUser: FoundUser): Option => ({
 });
 
 export default class RulesField extends Field {
-  // @observable public options: IObservableArray<Option> = [] as IObservableArray;
-  public foundUserOptions = observable<Option>([]);
+  public pickerOptions = observable<Option>([]);
   @observable public filter = '';
 
   constructor(props: any) {
@@ -29,7 +28,7 @@ export default class RulesField extends Field {
   @operation('updateOptions') private *updateOptions(filter: string) {
     if (filter) {
       const res: FoundUser[] = yield transactionsAPI.userList(filter);
-      this.foundUserOptions.replace(res.map(foundUserToOption));
+      this.pickerOptions.replace(res.map(foundUserToOption));
     }
   }
 
