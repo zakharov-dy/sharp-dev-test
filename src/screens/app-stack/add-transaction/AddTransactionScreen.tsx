@@ -12,7 +12,7 @@ export default class AddTransactionScreen extends Component<
     const goBack = () => navigation.goBack();
     const leftChild = (
       <Button transparent onPress={goBack}>
-        <Icon name="arrow-back" />
+        <Icon name="arrow-back" type="Ionicons" />
       </Button>
     );
     return {

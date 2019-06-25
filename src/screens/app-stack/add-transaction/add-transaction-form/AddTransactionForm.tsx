@@ -18,10 +18,14 @@ export default class AddTransactionForm extends Component<Props> {
     return (
       <Content>
         <Form>
-          <Picker field={nameField} placeholder={'Select name'}/>
-          <InputItem field={amountField} label="Amount" />
+          <Picker field={nameField} placeholder={'Select name'} />
+          <InputItem
+            field={amountField}
+            label="Amount"
+            inputProps={{keyboardType: 'number-pad'}}
+          />
           <ApplyButton block onPress={onClick}>
-            <Text>Login</Text>
+            <Text>Send</Text>
           </ApplyButton>
         </Form>
       </Content>

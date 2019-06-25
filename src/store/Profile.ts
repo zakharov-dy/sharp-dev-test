@@ -47,11 +47,6 @@ export class Profile {
     const userInfo: UserInfo = yield profileAPI.userInfo();
     this.setUserInfo(userInfo);
   }
-
-  @operation('logout') public *logout() {
-    yield AsyncStorage.setItem('JWT_BEARER_TOKEN', '');
-    navigate('SignIn');
-  }
 }
 
 export default new Profile();

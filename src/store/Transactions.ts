@@ -9,6 +9,8 @@ import {Transaction} from '_types/entities/transaction';
 import {back} from '_utils/navigation';
 import operation from '_utils/operationDecorathor';
 
+import profile from './Profile';
+
 export class Transactions {
   public transactions = observable<Transaction>([]);
 
@@ -21,7 +23,8 @@ export class Transactions {
     formParams: TransactionRequest
   ) {
     yield transactionsAPI.create(formParams);
-    this.getTransactions();
+    yield profile.userInfo();
+    yield this.getTransactions();
     back();
   }
 }

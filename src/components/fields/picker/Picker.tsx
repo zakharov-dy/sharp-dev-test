@@ -41,7 +41,7 @@ class Picker extends React.Component<Props> {
     const {field} = this.props;
     const bound = field.bind();
     return (
-      <Item picker>
+      <Item picker error={(field.blurred || !field.isPristine) && field.hasError}>
         <NBPicker
           renderHeader={this.renderPickerHeader}
           mode="dropdown"

@@ -1,6 +1,7 @@
 // @ts-ignore
 import {Field} from 'mobx-react-form';
 
+import transactionsStore from '_store/Transactions';
 import BaseForm from '_utils/BaseForm';
 
 import RulesField from './RulesField';
@@ -32,7 +33,8 @@ export default class SignInForm extends BaseForm {
   public hooks() {
     return {
       onSuccess(form: any) {
-        console.log(form.values());
+        const {name, amount} = form.values();
+        transactionsStore.createTransaction({name, amount: +amount});
       }
     };
   }

@@ -1,15 +1,25 @@
+import {compose} from '@typed/compose';
+import {observer} from 'mobx-react';
+
+import {bindStore} from '_hoc/bindStore';
+import {withOperation} from '_hoc/withOperation';
 import {withStore} from '_hoc/withStore';
 
-import Form from './form';
 import SignInForm, {Props} from './SignInForm';
+import addTransactionStore, {SignInStore} from './store';
 
-const form: any = new Form();
-
-const mapProps = (form: any): Props =>
+const mapProps = (store: SignInStore): Props =>
   ({
-    emailField: form.$('email'),
-    passwordField: form.$('password'),
-    onClick: form.onSubmit
+    emailField: store.form.$('email'),
+    passwordField: store.form.$('password'),
+    onClick: store.form.onSubmit
   } as Props);
 
-export default withStore<any, Props, {}>(form, mapProps)(SignInForm);
+export default compose(
+  bindStore<{}, SignInStore>(addTransactionStore, {
+    containerStyle: {flex: 1}
+  }),
+  withOperation(addTransactionStore.startUp),
+  withStore<SignInStore, Props, {}>(addTransactionStore, mapProps),
+  observer
+)(SignInForm);

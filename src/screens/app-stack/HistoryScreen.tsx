@@ -14,16 +14,30 @@ import {NavigationScreenProps} from 'react-navigation';
 
 import Header from './Header';
 
+const HeaderIconType = 'SimpleLineIcons';
+const HeaderIconStyle = {fontSize: 24};
+
 export default class HistoryScreen extends Component<NavigationScreenProps> {
   public static navigationOptions = ({navigation}: NavigationScreenProps) => {
     const addTransaction = () => navigation.push('AddTransaction');
-    const rightChild = (
-      <Button transparent onPress={addTransaction}>
-        <Icon name="plus" type="FontAwesome" />
+    const logout = () => navigation.push('SignIn');
+
+    const leftChild = (
+      <Button transparent onPress={logout}>
+        <Icon name="logout" type={HeaderIconType} style={HeaderIconStyle} />
       </Button>
     );
+
+    const rightChild = (
+      <Button transparent onPress={addTransaction}>
+        <Icon name="plus" type={HeaderIconType} style={HeaderIconStyle} />
+      </Button>
+    );
+
     return {
-      header: <Header title="History" rightChild={rightChild} />
+      header: (
+        <Header title="History" rightChild={rightChild} leftChild={leftChild} />
+      )
     };
   };
 
