@@ -1,5 +1,7 @@
 import {flow} from 'mobx';
 
+import {showTost} from '_utils/showTost';
+
 import core from '../index';
 
 // Поскольку flow канселится можно добавить и cancel, но тут это не нужно
@@ -26,13 +28,15 @@ export const operationRunner = <TArgs extends any[], TRes>(
     };
 
     const onError = (error: any) => {
-      console.log(error);
       core.addOrUpdateOperation({
         id,
         isError: true,
         error,
         isLoading: false
       });
+      console.log(error.response.data);
+      console.log(error.response);
+      console.log(error.response.headers);
     };
 
     return flow(genFunc)(...args)

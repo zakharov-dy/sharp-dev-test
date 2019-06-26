@@ -1,6 +1,8 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 import {AsyncStorage} from 'react-native';
 
+import {onRejectedResponseInterceptor} from './onRejectedResponseInterceptor';
+
 interface AxiosResponse<T = any> extends Promise<T> {}
 
 type AgentInstance = Omit<
