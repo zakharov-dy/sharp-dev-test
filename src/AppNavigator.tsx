@@ -5,9 +5,9 @@ import {
 } from 'react-navigation';
 
 import AddTransactionScreen from '_screens/app-stack/add-transaction/AddTransactionScreen';
-import HistoryScreen from '_screens/app-stack/HistoryScreen';
-import SignInScreen from '_screens/auth-stack/sign-in/SignInScreen';
+import HistoryScreen from '_screens/app-stack/history/HistoryScreen';
 import AuthLoadingScreen from '_screens/auth-loading';
+import SignInScreen from '_screens/auth-stack/sign-in/SignInScreen';
 import SignUpScreen from '_screens/auth-stack/sign-up/SignUpScreen';
 
 const AppStack = createStackNavigator(

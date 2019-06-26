@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 import core from '_store/core';
 
-interface OperationFn {
+export interface OperationFn {
   (): any;
   id: string;
 }

@@ -15,6 +15,8 @@ export class Transactions {
   public transactions = observable<Transaction>([]);
 
   @operation('getTransactions') public *getTransactions() {
+    console.log('refresh')
+    console.log(this);
     const transactionsList: TransactionsListResponse = yield transactionsAPI.list();
     this.transactions.replace(transactionsList.trans_token);
   }
